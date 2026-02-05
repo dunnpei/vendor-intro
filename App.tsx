@@ -150,7 +150,7 @@ const App: React.FC = () => {
 
       <footer className="bg-slate-900 text-white py-8">
         <div className="container mx-auto px-4 flex justify-center items-center">
-          <div className="text-xl md:text-3xl font-bold tracking-wider text-center">
+          <div className="text-2xl md:text-3xl font-bold tracking-wider text-center">
             &copy; {new Date().getFullYear()} 高雄大學城哈佛大樓
           </div>
         </div>
