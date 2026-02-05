@@ -82,7 +82,7 @@ const App: React.FC = () => {
           <h2 className="text-4xl md:text-6xl font-extrabold text-slate-800 mb-4 tracking-tight leading-tight">
             高雄大學城哈佛大樓
           </h2>
-          <p className="text-xl md:text-2xl text-slate-600 font-medium">
+          <p className="text-3xl md:text-4xl text-slate-600 font-medium">
             特約廠商優惠資訊
           </p>
         </section>
