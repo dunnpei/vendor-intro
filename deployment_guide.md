@@ -59,3 +59,22 @@ npm run deploy
    - Name: `VITE_GOOGLE_SHEET_API_URL`
    - Secret: (您的 Google Web App URL)
 3. 或者，最簡單的方式是修改本地的 `services/sheetService.ts`，直接將網址寫入程式碼中（取代 `import.meta.env...`），再重新執行部署。
+
+---
+
+## 5. 後續更新流程
+當您在本地修改了程式碼後，請執行以下 4 個步驟來更新網站：
+
+```bash
+# 1. 加入變更
+git add .
+
+# 2. 提交說明 (雙引號內寫改了什麼)
+git commit -m "更新網站內容"
+
+# 3. 推送到 GitHub (備份程式碼)
+git push
+
+# 4. 發布到網站 (更新網頁)
+npm run deploy
+```
