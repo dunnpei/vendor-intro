@@ -7,11 +7,12 @@ export interface Vendor {
   address: string;
   phone: string;
   website: string;
-  category: VendorCategory;
+  category: string; // Changed from enum to string for dynamic categories
   city: string;
   services: string[];
   cases: CaseStudy[];
   updatedAt?: string;
+  active?: boolean;
 }
 
 export interface CaseStudy {
@@ -19,22 +20,11 @@ export interface CaseStudy {
   url: string;
 }
 
-export enum VendorCategory {
-  ALL = '全部',
-  ECOMMERCE = '電商購物',
-  CORPORATE = '企業形象',
-  LANDING = '活動頁面',
-  SYSTEM = '系統開發',
-}
+// Keep a constant for the 'All' state
+export const CATEGORY_ALL = '全部';
 
 export interface FilterState {
   keyword: string;
   category: string;
   city: string;
-}
-
-export interface PaginationState {
-  currentPage: number;
-  itemsPerPage: number;
-  totalItems: number;
 }

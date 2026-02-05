@@ -1,19 +1,20 @@
 import React from 'react';
-import { FilterState, VendorCategory } from '../types';
+import { FilterState, CATEGORY_ALL } from '../types';
 import { Search, Filter, MapPin } from 'lucide-react';
 
 interface FilterBarProps {
   filters: FilterState;
   cities: string[];
+  categories: string[];
   onFilterChange: (key: keyof FilterState, value: string) => void;
   totalResults: number;
 }
 
-const FilterBar: React.FC<FilterBarProps> = ({ filters, cities, onFilterChange, totalResults }) => {
+const FilterBar: React.FC<FilterBarProps> = ({ filters, cities, categories, onFilterChange, totalResults }) => {
   return (
     <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-200 mb-8 sticky top-4 z-10">
       <div className="flex flex-col lg:flex-row gap-4">
-        
+
         {/* Search Input */}
         <div className="relative flex-grow">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -30,7 +31,7 @@ const FilterBar: React.FC<FilterBarProps> = ({ filters, cities, onFilterChange, 
 
         {/* Filters Group */}
         <div className="flex gap-2 overflow-x-auto pb-1 lg:pb-0">
-          
+
           {/* Category Dropdown */}
           <div className="relative min-w-[140px]">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -41,7 +42,8 @@ const FilterBar: React.FC<FilterBarProps> = ({ filters, cities, onFilterChange, 
               value={filters.category}
               onChange={(e) => onFilterChange('category', e.target.value)}
             >
-              {Object.values(VendorCategory).map((cat) => (
+              <option value={CATEGORY_ALL}>{CATEGORY_ALL}</option>
+              {categories.map((cat) => (
                 <option key={cat} value={cat}>{cat}</option>
               ))}
             </select>
@@ -64,11 +66,12 @@ const FilterBar: React.FC<FilterBarProps> = ({ filters, cities, onFilterChange, 
             </select>
           </div>
 
+          {/* Result Count Badge */}
+          <div className="flex items-center justify-center bg-slate-100 text-slate-500 px-3 rounded-lg text-sm whitespace-nowrap min-w-[80px]">
+            {totalResults} 筆資料
+          </div>
+
         </div>
-      </div>
-      
-      <div className="mt-3 text-xs text-slate-400 text-right">
-        共找到 <span className="font-bold text-primary-600">{totalResults}</span> 家符合條件的廠商
       </div>
     </div>
   );

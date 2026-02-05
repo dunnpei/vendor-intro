@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { fetchVendors } from './services/sheetService';
-import { Vendor, FilterState, VendorCategory } from './types';
+import { Vendor, FilterState, CATEGORY_ALL } from './types';
 import VendorCard from './components/VendorCard';
 import FilterBar from './components/FilterBar';
 import { Loader2, AlertCircle } from 'lucide-react';
@@ -12,7 +12,7 @@ const App: React.FC = () => {
 
   const [filters, setFilters] = useState<FilterState>({
     keyword: '',
-    category: VendorCategory.ALL,
+    category: CATEGORY_ALL,
     city: ''
   });
 
@@ -42,6 +42,13 @@ const App: React.FC = () => {
     return Array.from(new Set(vendors.map(v => v.city))).sort();
   }, [vendors]);
 
+  // Unique categories for filter (Dynamic!)
+  const categories = useMemo(() => {
+    // Filter out empty or null categories and sort
+    const allCats = vendors.map(v => v.category).filter(Boolean);
+    return Array.from(new Set(allCats)).sort();
+  }, [vendors]);
+
   // Filtering Logic
   const filteredVendors = useMemo(() => {
     return vendors.filter(vendor => {
@@ -49,7 +56,7 @@ const App: React.FC = () => {
         vendor.name.toLowerCase().includes(filters.keyword.toLowerCase()) ||
         vendor.services.some(s => s.toLowerCase().includes(filters.keyword.toLowerCase()));
 
-      const matchCategory = filters.category === VendorCategory.ALL || vendor.category === filters.category;
+      const matchCategory = filters.category === CATEGORY_ALL || vendor.category === filters.category;
 
       const matchCity = filters.city === '' || vendor.city === filters.city;
 
@@ -91,6 +98,7 @@ const App: React.FC = () => {
         <FilterBar
           filters={filters}
           cities={cities}
+          categories={categories}
           onFilterChange={handleFilterChange}
           totalResults={filteredVendors.length}
         />
@@ -110,7 +118,7 @@ const App: React.FC = () => {
           <div className="text-center py-20 bg-white rounded-xl border border-dashed border-slate-300">
             <p className="text-slate-400 mb-2">找不到符合條件的廠商</p>
             <button
-              onClick={() => setFilters({ keyword: '', category: VendorCategory.ALL, city: '' })}
+              onClick={() => setFilters({ keyword: '', category: CATEGORY_ALL, city: '' })}
               className="text-primary-600 font-medium hover:underline"
             >
               清除所有篩選條件
@@ -148,6 +156,7 @@ const App: React.FC = () => {
         )}
       </main>
 
+      {/* Footer */}
       <footer className="bg-slate-900 text-white py-8">
         <div className="container mx-auto px-4 flex justify-center items-center">
           <div className="text-2xl md:text-3xl font-bold tracking-wider text-center">
