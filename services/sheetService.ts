@@ -1,4 +1,4 @@
-import { Vendor, VendorCategory, CaseStudy } from '../types';
+import { Vendor, CaseStudy, CATEGORY_ALL } from '../types';
 
 /**
  * MOCK DATA
@@ -14,7 +14,7 @@ const MOCK_VENDORS: Vendor[] = [
     address: '台北市信義區信義路五段7號',
     phone: '02-2345-6789',
     website: 'https://example.com',
-    category: VendorCategory.CORPORATE,
+    category: '企業形象',
     city: '台北市',
     services: ['RWD 響應式設計', 'UI/UX 設計', '品牌識別', 'SEO 優化'],
     cases: [
@@ -32,7 +32,7 @@ const MOCK_VENDORS: Vendor[] = [
     address: '台中市西屯區台灣大道三段',
     phone: '04-2255-8888',
     website: 'https://example.com',
-    category: VendorCategory.ECOMMERCE,
+    category: '電商購物',
     city: '台中市',
     services: ['購物車系統', '金流串接', '會員系統', '庫存管理 API'],
     cases: [
@@ -49,7 +49,7 @@ const MOCK_VENDORS: Vendor[] = [
     address: '高雄市苓雅區海邊路',
     phone: '07-330-1234',
     website: 'https://example.com',
-    category: VendorCategory.LANDING,
+    category: '活動頁面',
     city: '高雄市',
     services: ['一頁式網頁', '活動報名系統', 'Google Analytics 設定'],
     cases: [
@@ -66,7 +66,7 @@ const MOCK_VENDORS: Vendor[] = [
     address: '新竹市東區光復路二段',
     phone: '03-571-0000',
     website: 'https://example.com',
-    category: VendorCategory.SYSTEM,
+    category: '系統開發',
     city: '新竹市',
     services: ['客製化系統開發', 'API 串接', 'AWS 雲端架構', '資安檢測'],
     cases: [
@@ -83,7 +83,7 @@ const MOCK_VENDORS: Vendor[] = [
     address: '台北市大安區敦化南路',
     phone: '02-2700-1111',
     website: 'https://example.com',
-    category: VendorCategory.CORPORATE,
+    category: '企業形象',
     city: '台北市',
     services: ['視覺設計', '3D 網頁特效', '品牌重塑'],
     cases: [
@@ -100,7 +100,7 @@ const MOCK_VENDORS: Vendor[] = [
     address: '台南市東區長榮路',
     phone: '06-200-9999',
     website: 'https://example.com',
-    category: VendorCategory.LANDING,
+    category: '活動頁面',
     city: '台南市',
     services: ['Wordpress 套版', '部落格建置', '基本 SEO'],
     cases: [
@@ -110,15 +110,10 @@ const MOCK_VENDORS: Vendor[] = [
   }
 ];
 
-// Helper to determine category from string
-const mapCategory = (catStr: string): VendorCategory => {
-  if (!catStr) return VendorCategory.CORPORATE;
-  for (const value of Object.values(VendorCategory)) {
-    if (catStr === value || catStr.includes(value)) {
-      return value;
-    }
-  }
-  return VendorCategory.CORPORATE; // Default
+// Helper to determine category from string (No longer strictly restricted by enum)
+const mapCategory = (catStr: string): string => {
+  if (!catStr) return '其他';
+  return catStr.trim();
 };
 
 // Helper to parse cases
@@ -150,7 +145,7 @@ const transformData = (rawData: any[]): Vendor[] => {
     website: String(item.website || '#'),
     category: mapCategory(String(item.category || '')),
     city: String(item.city || '其他'),
-    services: item.services ? String(item.services).split(',').map(s => s.trim()) : [],
+    services: item.services ? String(item.services).split(',').map((s: string) => s.trim()) : [],
     cases: parseCases(item.cases),
     updatedAt: new Date().toISOString()
   }));
