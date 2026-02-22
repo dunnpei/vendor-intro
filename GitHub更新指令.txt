@@ -1,0 +1,4 @@
+git add .
+git commit -m "修改了標題文字"
+git push
+npm run deploy

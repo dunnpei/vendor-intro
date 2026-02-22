@@ -4,11 +4,13 @@ import { Vendor, FilterState, CATEGORY_ALL } from './types';
 import VendorCard from './components/VendorCard';
 import FilterBar from './components/FilterBar';
 import { Loader2, AlertCircle } from 'lucide-react';
+import DisclaimerModal from './components/DisclaimerModal';
 
 const App: React.FC = () => {
   const [vendors, setVendors] = useState<Vendor[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [showDisclaimer, setShowDisclaimer] = useState<boolean>(false);
 
   const [filters, setFilters] = useState<FilterState>({
     keyword: '',
@@ -35,7 +37,18 @@ const App: React.FC = () => {
       }
     };
     loadData();
+
+    // Check if user has already accepted the disclaimer
+    const hasAccepted = localStorage.getItem('disclaimer_accepted');
+    if (!hasAccepted) {
+      setShowDisclaimer(true);
+    }
   }, []);
+
+  const handleAcceptDisclaimer = () => {
+    localStorage.setItem('disclaimer_accepted', 'true');
+    setShowDisclaimer(false);
+  };
 
   // Unique cities for filter
   const cities = useMemo(() => {
@@ -164,6 +177,11 @@ const App: React.FC = () => {
           </div>
         </div>
       </footer>
+
+      {/* Mandatory Disclaimer Modal */}
+      {showDisclaimer && (
+        <DisclaimerModal onAccept={handleAcceptDisclaimer} />
+      )}
     </div>
   );
 };
