@@ -28,33 +28,33 @@ const DisclaimerModal: React.FC<DisclaimerModalProps> = ({ onAccept }) => {
                 <div className="flex-grow overflow-y-auto p-6 md:p-8">
                     <div className="prose prose-slate max-w-none text-slate-600 space-y-4">
                         <p className="text-lg font-semibold text-slate-800">
-                            親愛的訪客您好，在您開始瀏覽「大學城哈佛-特約廠商」資訊前，請先閱讀並同意以下條款：
+                            親愛的住戶您好，在您開始瀏覽「大學城哈佛-特約廠商」資訊前，請先閱讀並同意以下條款：
                         </p>
 
                         <div className="bg-slate-50 border border-slate-200 rounded-lg p-4 space-y-3 text-sm leading-relaxed">
                             <section>
                                 <h3 className="font-bold text-slate-800 mb-1">1. 資訊用途說明</h3>
-                                <p>本網站所載之廠商優惠資訊僅供參考，實際優惠內容、使用限制及有效期限概依各商家現場公告為準。</p>
+                                <p>本網所載之廠商優惠資訊僅供參考，實際優惠內容、使用限制及有效期限概依各商家現場公告為準。</p>
                             </section>
 
                             <section>
                                 <h3 className="font-bold text-slate-800 mb-1">2. 個人資料保護</h3>
-                                <p>本站不會主動蒐集您的個人私密資料。若您透過本站連結至外部網站或與廠商聯繫，請注意個人資訊安全。</p>
+                                <p>本網不會主動蒐集您的個人私密資料。若您透過本站連結至外部網站或與廠商聯繫，請注意個人資訊安全。</p>
                             </section>
 
                             <section>
-                                <h3 className="font-bold text-slate-800 mb-1">3. 責任聲明</h3>
-                                <p>本站僅提供資訊媒合，並不對廠商提供之產品或服務品質作任何擔保。若發生消費爭議，請逕洽該廠商處理。</p>
+                                <h3 className="font-bold text-slate-800 mb-1">3. 免責聲明</h3>
+                                <p>本網僅提供廠商資訊媒合，並不對廠商提供之產品或服務品質作任何擔保。若發生消費爭議，請逕洽該廠商處理。</p>
                             </section>
 
                             <section>
                                 <h3 className="font-bold text-slate-800 mb-1">4. 智慧財產權</h3>
-                                <p>本站內容（含商標、圖文、排版）均受著作權保護，未經書面許可請勿擅自擷取、轉載或作為商業用途。</p>
+                                <p>本網內容（含商標、圖文、排版）均受著作權保護，未經書面許可請勿擅自擷取、轉載或作為商業用途。</p>
                             </section>
                         </div>
 
                         <p className="text-sm text-slate-500 italic border-l-4 border-primary-300 pl-3">
-                            點擊「我已閱讀並同意以上聲明」按鈕，即代表您同意上述所有規定。本紀錄將儲存於您的瀏覽器中，供後續驗證使用。
+                            點擊「我已閱讀並同意以上聲明」按鈕，即代表您同意上述所有規定。
                         </p>
                     </div>
                 </div>
