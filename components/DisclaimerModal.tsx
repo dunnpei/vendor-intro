@@ -21,7 +21,7 @@ const DisclaimerModal: React.FC<DisclaimerModalProps> = ({ onAccept }) => {
                 {/* Header */}
                 <div className="p-6 bg-primary-600 text-white flex items-center gap-3">
                     <ShieldCheck size={32} />
-                    <h2 className="text-2xl font-bold">網站使用與個人資料保護聲明</h2>
+                    <h2 className="text-2xl font-bold">網站使用與免責聲明</h2>
                 </div>
 
                 {/* Content Area */}
@@ -34,7 +34,7 @@ const DisclaimerModal: React.FC<DisclaimerModalProps> = ({ onAccept }) => {
                         <div className="bg-slate-50 border border-slate-200 rounded-lg p-4 space-y-3 text-sm leading-relaxed">
                             <section>
                                 <h3 className="font-bold text-slate-800 mb-1">1. 資訊用途說明</h3>
-                                <p>本網所載之廠商優惠資訊僅供參考，實際優惠內容、使用限制及有效期限概依各商家現場公告為準。</p>
+                                <p>本網所載之廠商優惠資訊僅供參考，實際優惠內容、使用限制依各商家現場公告為準。</p>
                             </section>
 
                             <section>
@@ -65,7 +65,7 @@ const DisclaimerModal: React.FC<DisclaimerModalProps> = ({ onAccept }) => {
                         onClick={onAccept}
                         className="w-full md:w-auto px-12 py-4 bg-primary-600 hover:bg-primary-700 text-white text-lg font-bold rounded-xl shadow-lg shadow-primary-200 transition-all active:scale-95 duration-200 flex items-center justify-center gap-2"
                     >
-                        我已閱讀並同意以上聲明，繼續瀏覽
+                        我已閱讀並同意以上聲明
                     </button>
                 </div>
             </div>
