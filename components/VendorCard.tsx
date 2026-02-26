@@ -28,7 +28,7 @@ const VendorCard: React.FC<VendorCardProps> = ({ vendor }) => {
         <div className="md:w-2/3 p-5 flex flex-col justify-between">
           <div>
             <div className="flex justify-between items-start mb-2">
-              <h3 className="text-xl font-bold text-slate-800 tracking-tight">{vendor.name}</h3>
+              <h3 className="text-2xl font-bold text-slate-800 tracking-tight">{vendor.name}</h3>
               <div className="flex items-center gap-1.5 shrink-0">
                 <a
                   href={vendor.website}
@@ -40,11 +40,11 @@ const VendorCard: React.FC<VendorCardProps> = ({ vendor }) => {
                   {/* 統一大小：18 */}
                   <Globe size={18} />
                 </a>
-                <span className="text-sm text-slate-700 bg-slate-100 px-2 py-1 rounded-full font-medium">{vendor.city}</span>
+                <span className="text-sm text-slate-700 bg-slate-100 px-2 py-1 rounded-full">{vendor.city}</span>
               </div>
             </div>
 
-            <p className="text-slate-700 text-base mb-4 leading-relaxed line-clamp-2">
+            <p className="text-slate-700 text-base mb-4 leading-relaxed line-clamp-2 font-medium">
               {vendor.shortDescription}
             </p>
 
@@ -57,7 +57,7 @@ const VendorCard: React.FC<VendorCardProps> = ({ vendor }) => {
               <div className="flex items-center text-slate-700 text-base">
                 {/* 統一大小：18 */}
                 <Phone size={18} className="mr-2 text-blue-500 shrink-0" />
-                <a href={`tel:${vendor.phone}`} className="hover:text-blue-600 transition-colors font-medium">
+                <a href={`tel:${vendor.phone}`} className="hover:text-blue-600 transition-colors">
                   {vendor.phone}
                 </a>
               </div>
