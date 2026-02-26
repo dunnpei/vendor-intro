@@ -21,20 +21,20 @@ const DisclaimerModal: React.FC<DisclaimerModalProps> = ({ onAccept }) => {
                 {/* Header */}
                 <div className="p-6 bg-primary-600 text-white flex items-center gap-3">
                     <ShieldCheck size={32} />
-                    <h2 className="text-2xl font-bold">網站使用與免責聲明</h2>
+                    <h2 className="text-2xl font-bold">網站聲明與使用條款</h2>
                 </div>
 
                 {/* Content Area */}
                 <div className="flex-grow overflow-y-auto p-6 md:p-8">
-                    <div className="prose prose-slate max-w-none text-slate-600 space-y-4">
+                    <div className="prose prose-slate max-w-none text-slate-700 space-y-4">
                         <p className="text-lg font-semibold text-slate-800">
                             親愛的住戶您好，在您開始瀏覽「大學城哈佛-特約廠商」資訊前，請先閱讀並同意以下條款：
                         </p>
 
                         <div className="bg-slate-50 border border-slate-200 rounded-lg p-4 space-y-3 text-sm leading-relaxed">
                             <section>
-                                <h3 className="font-bold text-slate-800 mb-1">1. 資訊用途說明</h3>
-                                <p>本網所載之廠商優惠資訊僅供參考，實際優惠內容、使用限制依各商家現場公告為準。</p>
+                                <h3 className="font-bold text-slate-800 mb-1">1. 優惠使用說明</h3>
+                                <p>消費時須出示指定認證標誌始可獲得相關優惠，若未持指定認證標誌，特約廠商得拒絕提供優惠。</p>
                             </section>
 
                             <section>
@@ -53,9 +53,7 @@ const DisclaimerModal: React.FC<DisclaimerModalProps> = ({ onAccept }) => {
                             </section>
                         </div>
 
-                        <p className="text-sm text-slate-500 italic border-l-4 border-primary-300 pl-3">
-                            點擊「我已閱讀並同意以上聲明」按鈕，即代表您同意上述所有規定。
-                        </p>
+                        
                     </div>
                 </div>
 
@@ -65,7 +63,7 @@ const DisclaimerModal: React.FC<DisclaimerModalProps> = ({ onAccept }) => {
                         onClick={onAccept}
                         className="w-full md:w-auto px-12 py-4 bg-primary-600 hover:bg-primary-700 text-white text-lg font-bold rounded-xl shadow-lg shadow-primary-200 transition-all active:scale-95 duration-200 flex items-center justify-center gap-2"
                     >
-                        我已閱讀並同意以上聲明
+                        我已閱讀並同意以上條款
                     </button>
                 </div>
             </div>
