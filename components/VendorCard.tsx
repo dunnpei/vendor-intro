@@ -75,7 +75,7 @@ const VendorCard: React.FC<VendorCardProps> = ({ vendor }) => {
             <Tag size={18} className="mr-2 text-blue-500" />
             優惠內容
           </h4>
-          <div className="text-slate-700 text-base leading-relaxed whitespace-pre-line font-medium">
+          <div className="text-slate-700 text-base leading-relaxed whitespace-pre-line">
             {vendor.fullDescription}
           </div>
         </div>
@@ -87,7 +87,7 @@ const VendorCard: React.FC<VendorCardProps> = ({ vendor }) => {
             <Briefcase size={18} className="mr-2 text-blue-500" />
             服務項目
           </h4>
-          <p className="text-slate-700 text-base leading-relaxed font-medium">
+          <p className="text-slate-700 text-base leading-relaxed">
             {vendor.services.join(' · ')}
           </p>
         </div>
