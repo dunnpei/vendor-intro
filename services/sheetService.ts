@@ -9,8 +9,8 @@ const MOCK_VENDORS: Vendor[] = [
     id: '1',
     name: '極光數位設計',
     imageUrl: 'https://images.unsplash.com/photo-1467232004560-64a512d22f7d?auto=format&fit=crop&q=80&w=800',
-    shortDescription: '專注於高互動性的品牌形象網站設計，讓您的品牌脫穎而出。',
-    fullDescription: '極光數位設計成立於 2015 年，擁有多年的跨國專案經驗。我們擅長使用最新的前端技術 (React, Vue, WebGL) 打造令人驚艷的視覺效果。我們的設計哲學是「少即是多」，致力於提供使用者最直覺的操作體驗。\n\n我們提供全方位的數位解決方案，從策略規劃、視覺設計到程式開發，一條龍服務確保品質一致性。',
+    shortDescription: 'RWD 響應式設計 · UI/UX 設計 · 品牌識別 · SEO 優化',
+    fullDescription: '極光數位設計成立於 2015 年，擁有多年的跨國專案經驗。我們擅長使用最新的前端技術...',
     address: '台北市信義區信義路五段7號',
     phone: '02-2345-6789',
     website: 'https://example.com',
@@ -27,8 +27,8 @@ const MOCK_VENDORS: Vendor[] = [
     id: '2',
     name: '雲端電商整合',
     imageUrl: 'https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?auto=format&fit=crop&q=80&w=800',
-    shortDescription: '一站式電商解決方案，協助傳統產業數位轉型。',
-    fullDescription: '我們不僅僅是網頁設計公司，更是您的生意夥伴。專精於 Shopify 與 WordPress WooCommerce 系統建置，並提供完整的金流、物流串接服務。\n\n團隊內配有專業的數位行銷顧問，從建站到導流一次搞定，讓您的網路商店不只是好看，更會賣！',
+    shortDescription: '購物車系統 · 金流串接 · 會員系統 · 庫存管理 API',
+    fullDescription: '我們不僅僅是網頁設計公司，更是您的生意夥伴...',
     address: '台中市西屯區台灣大道三段',
     phone: '04-2255-8888',
     website: 'https://example.com',
@@ -106,7 +106,9 @@ const MOCK_VENDORS: Vendor[] = [
     cases: [
       { title: '個人部落格', url: '#' },
       { title: '餐廳菜單網站', url: '#' }
-    ]
+    ],
+    rating: 4.6,
+    reviewCount: 558
   }
 ];
 
@@ -145,8 +147,10 @@ const transformData = (rawData: any[]): Vendor[] => {
     website: String(item.website || '#'),
     category: mapCategory(String(item.category || '')),
     city: String(item.city || '其他'),
-    services: item.services ? String(item.services).split(',').map((s: string) => s.trim()) : [],
+    services: item.shortDescription ? String(item.shortDescription).split(/[·,]+/).map((s: string) => s.trim()) : [],
     cases: parseCases(item.cases),
+    rating: Number(item['評分'] || 0),
+    reviewCount: Number(item['評論數'] || 0),
     updatedAt: new Date().toISOString()
   }));
 };

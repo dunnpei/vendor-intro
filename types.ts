@@ -11,6 +11,8 @@ export interface Vendor {
   city: string;
   services: string[];
   cases: CaseStudy[];
+  rating?: number;
+  reviewCount?: number;
   updatedAt?: string;
   active?: boolean;
 }

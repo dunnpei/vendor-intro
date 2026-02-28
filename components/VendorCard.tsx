@@ -1,6 +1,7 @@
 import React from 'react';
 import { Vendor } from '../types';
 import { MapPin, Phone, Globe, Tag, Briefcase } from 'lucide-react';
+import StarRating from './StarRating';
 
 interface VendorCardProps {
   vendor: Vendor;
@@ -44,9 +45,8 @@ const VendorCard: React.FC<VendorCardProps> = ({ vendor }) => {
               </div>
             </div>
 
-            <p className="text-slate-700 text-base mb-4 leading-relaxed line-clamp-2 font-medium">
-              {vendor.shortDescription}
-            </p>
+            {/* Google Maps 款星級評分 */}
+            <StarRating rating={vendor.rating} reviewCount={vendor.reviewCount} />
 
             <div className="space-y-2">
               <div className="flex items-center text-slate-700 text-base">
