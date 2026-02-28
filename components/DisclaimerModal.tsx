@@ -31,7 +31,7 @@ const DisclaimerModal: React.FC<DisclaimerModalProps> = ({ onAccept }) => {
                             親愛的住戶您好，在您開始瀏覽「大學城哈佛-特約廠商」資訊前，請先閱讀並同意以下條款：
                         </p>
 
-                        <div className="bg-slate-50 border border-slate-200 rounded-lg p-4 space-y-3 text-sm leading-relaxed">
+                        <div className="bg-slate-50 border border-slate-200 rounded-lg p-4 space-y-3 text-base leading-relaxed">
                             <section>
                                 <h3 className="font-bold text-slate-800 mb-1">1. 優惠使用說明</h3>
                                 <p>消費時須出示指定認證標誌始可獲得相關優惠，若未持指定認證標誌，特約廠商得拒絕提供優惠。</p>
@@ -53,7 +53,7 @@ const DisclaimerModal: React.FC<DisclaimerModalProps> = ({ onAccept }) => {
                             </section>
                         </div>
 
-                        
+
                     </div>
                 </div>
 

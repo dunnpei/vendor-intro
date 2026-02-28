@@ -73,7 +73,7 @@ const VendorCard: React.FC<VendorCardProps> = ({ vendor }) => {
           <h4 className="font-bold text-slate-800 mb-2 flex items-center text-lg">
             {/* 統一大小：18 */}
             <Tag size={18} className="mr-2 text-blue-500" />
-            優惠內容
+            憑證優惠
           </h4>
           <div className="text-slate-700 text-base leading-relaxed whitespace-pre-line">
             {vendor.fullDescription}
