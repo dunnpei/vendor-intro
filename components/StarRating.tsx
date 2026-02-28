@@ -40,7 +40,7 @@ const StarRating: React.FC<StarRatingProps> = ({ rating = 0, reviewCount = 0 }) 
     };
 
     return (
-        <div className="flex items-center gap-1.5 mb-2">
+        <div className="flex items-center gap-1.5">
             {/* 分數文字 */}
             <span className="text-sm font-bold text-slate-700">{safeRating.toFixed(1)}</span>
 

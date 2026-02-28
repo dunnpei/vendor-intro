@@ -31,24 +31,25 @@ const VendorCard: React.FC<VendorCardProps> = ({ vendor }) => {
             <div className="flex justify-between items-start mb-2">
               <h3 className="text-2xl font-bold text-slate-800 tracking-tight">{vendor.name}</h3>
               <div className="flex items-center gap-1.5 shrink-0">
-                <a
-                  href={vendor.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-500 hover:text-blue-600 transition-colors shrink-0"
-                  title="前往官方網站"
-                >
-                  {/* 統一大小：18 */}
-                  <Globe size={18} />
-                </a>
                 <span className="text-sm text-slate-700 bg-slate-100 px-2 py-1 rounded-full">{vendor.city}</span>
               </div>
             </div>
 
-            {/* Google Maps 款星級評分 */}
-            <StarRating rating={vendor.rating} reviewCount={vendor.reviewCount} />
-
             <div className="space-y-2">
+              {/* 網站連結與評分 */}
+              <div className="flex items-center text-slate-700 text-base">
+                <a
+                  href={vendor.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center text-blue-500 hover:text-blue-600 transition-colors shrink-0 mr-2"
+                  title="前往官方網站"
+                >
+                  <Globe size={18} />
+                </a>
+                <StarRating rating={vendor.rating} reviewCount={vendor.reviewCount} />
+              </div>
+
               <div className="flex items-center text-slate-700 text-base">
                 {/* 統一大小：18 */}
                 <MapPin size={18} className="mr-2 text-blue-500 shrink-0" />
