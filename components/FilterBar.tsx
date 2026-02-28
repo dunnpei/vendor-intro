@@ -69,7 +69,7 @@ const FilterBar: React.FC<FilterBarProps> = ({ filters, cities, categories, onFi
         </div>
 
         {/* Row 3: Result Count */}
-        <div className="text-right text-slate-500 text-sm mt-1">
+        <div className="text-right text-slate-500 text-base mt-1">
           共找到 <span className="text-primary-600 font-bold">{totalResults}</span> 家符合條件的廠商
         </div>
 
