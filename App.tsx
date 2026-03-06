@@ -18,9 +18,9 @@ const App: React.FC = () => {
     city: ''
   });
 
-  // Pagination State
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6;
+  // Infinite Scroll State
+  const [visibleCount, setVisibleCount] = useState(6);
+  const observerTarget = React.useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const loadData = async () => {
@@ -71,16 +71,37 @@ const App: React.FC = () => {
     });
   }, [vendors, filters]);
 
-  // Pagination Logic
-  const totalPages = Math.ceil(filteredVendors.length / itemsPerPage);
-  const currentVendors = filteredVendors.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
+  // Set up Intersection Observer for Infinite Scroll
+  useEffect(() => {
+    if (loading) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && visibleCount < filteredVendors.length) {
+          setVisibleCount(prev => prev + 6);
+        }
+      },
+      { threshold: 1.0, rootMargin: '100px' }
+    );
+
+    const currentTarget = observerTarget.current;
+    if (currentTarget) {
+      observer.observe(currentTarget);
+    }
+
+    return () => {
+      if (currentTarget) {
+        observer.unobserve(currentTarget);
+      }
+    };
+  }, [loading, visibleCount, filteredVendors.length]);
+
+  // Infinite Scroll Current Data
+  const currentVendors = filteredVendors.slice(0, visibleCount);
 
   const handleFilterChange = (key: keyof FilterState, value: string) => {
     setFilters(prev => ({ ...prev, [key]: value }));
-    setCurrentPage(1); // Reset to first page on filter change
+    setVisibleCount(6); // Reset to initial count on filter change
   };
 
   return (
@@ -132,34 +153,23 @@ const App: React.FC = () => {
             </button>
           </div>
         ) : (
-          <div className="space-y-6 md:space-y-0 md:grid md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-6">
-            {currentVendors.map(vendor => (
-              <VendorCard key={vendor.id} vendor={vendor} />
-            ))}
-          </div>
-        )}
+          <>
+            <div className="space-y-6 md:space-y-0 md:grid md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-6">
+              {currentVendors.map(vendor => (
+                <VendorCard key={vendor.id} vendor={vendor} />
+              ))}
+            </div>
 
-        {/* Pagination */}
-        {!loading && totalPages > 1 && (
-          <div className="flex justify-center mt-12 space-x-2">
-            <button
-              onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
-              disabled={currentPage === 1}
-              className="px-4 py-2 rounded border border-slate-200 text-slate-600 disabled:opacity-50 hover:bg-white hover:border-primary-300 transition-colors"
-            >
-              上一頁
-            </button>
-            <span className="px-4 py-2 text-slate-500">
-              {currentPage} / {totalPages}
-            </span>
-            <button
-              onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
-              disabled={currentPage === totalPages}
-              className="px-4 py-2 rounded border border-slate-200 text-slate-600 disabled:opacity-50 hover:bg-white hover:border-primary-300 transition-colors"
-            >
-              下一頁
-            </button>
-          </div>
+            {/* Infinite Scroll Sentinel */}
+            {visibleCount < filteredVendors.length && (
+              <div
+                ref={observerTarget}
+                className="w-full h-8 mt-4 flex justify-center items-center"
+              >
+                <Loader2 className="animate-spin text-slate-300" size={24} />
+              </div>
+            )}
+          </>
         )}
       </main>
 
