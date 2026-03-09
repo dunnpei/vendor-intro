@@ -29,10 +29,7 @@ const VendorCard: React.FC<VendorCardProps> = ({ vendor }) => {
         <div className="md:w-2/3 p-5 flex flex-col justify-between">
           <div>
             <div className="flex justify-between items-start mb-2">
-              <h3 className="text-2xl font-bold text-slate-800 tracking-tight">{vendor.name}</h3>
-              <div className="flex items-center gap-1.5 shrink-0">
-                <span className="text-sm text-slate-700 bg-slate-100 px-2 py-1 rounded-full">{vendor.city}</span>
-              </div>
+              <h3 className="text-xl font-bold text-slate-800 tracking-tight">{vendor.name}</h3>
             </div>
 
             <div className="space-y-2">
