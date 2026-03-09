@@ -5,9 +5,10 @@ import StarRating from './StarRating';
 
 interface VendorCardProps {
   vendor: Vendor;
+  index: number;
 }
 
-const VendorCard: React.FC<VendorCardProps> = ({ vendor }) => {
+const VendorCard: React.FC<VendorCardProps> = ({ vendor, index }) => {
   return (
     <article
       className="flex flex-col h-full rounded-xl border border-slate-500 overflow-hidden transition-all duration-300 hover:shadow-md drop-shadow-[0_4px_6px_rgba(0,0,0,0.1)]"
@@ -23,6 +24,10 @@ const VendorCard: React.FC<VendorCardProps> = ({ vendor }) => {
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             loading="lazy"
           />
+          {/* 序號標籤 */}
+          <div className="absolute top-0 left-0 bg-red-600 text-white font-bold px-3 py-1 rounded-br-lg shadow-md z-10 text-lg">
+            {index + 1}
+          </div>
         </div>
 
         {/* 基本資訊區塊 */}

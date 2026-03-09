@@ -155,8 +155,8 @@ const App: React.FC = () => {
         ) : (
           <>
             <div className="space-y-6 md:space-y-0 md:grid md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-6">
-              {currentVendors.map(vendor => (
-                <VendorCard key={vendor.id} vendor={vendor} />
+              {currentVendors.map((vendor, index) => (
+                <VendorCard key={vendor.id} vendor={vendor} index={index} />
               ))}
             </div>
 
