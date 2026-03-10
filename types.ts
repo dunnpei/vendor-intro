@@ -15,6 +15,7 @@ export interface Vendor {
   reviewCount?: number;
   updatedAt?: string;
   active?: boolean;
+  promotions: string[];
 }
 
 export interface CaseStudy {

@@ -94,6 +94,29 @@ const VendorCard: React.FC<VendorCardProps> = ({ vendor, index }) => {
             {vendor.services.join(' · ')}
           </p>
         </div>
+
+        {/* 廠商文宣 (Q-U 欄位) */}
+        {vendor.promotions && vendor.promotions.length > 0 && (
+          <div className="pt-2">
+            <h4 className="font-bold text-slate-800 mb-2 flex items-center text-lg">
+              <Tag size={18} className="mr-2 text-blue-500" />
+              廠商文宣
+            </h4>
+            <div className="flex flex-wrap gap-2">
+              {vendor.promotions.map((url, idx) => (
+                <a
+                  key={idx}
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-1.5 bg-white border border-blue-200 text-blue-600 rounded-lg text-sm font-medium hover:bg-blue-50 hover:border-blue-300 transition-all shadow-sm flex items-center gap-1.5"
+                >
+                  文宣 {idx + 1}
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </article>
   );

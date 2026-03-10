@@ -21,7 +21,8 @@ const MOCK_VENDORS: Vendor[] = [
       { title: '科技巨頭年度形象頁', url: '#' },
       { title: '時尚品牌線上展覽', url: '#' }
     ],
-    updatedAt: '2025-02-05'
+    updatedAt: '2025-02-05',
+    promotions: ['https://example.com/promo1.jpg', 'https://example.com/promo2.jpg']
   },
   {
     id: '2',
@@ -38,7 +39,8 @@ const MOCK_VENDORS: Vendor[] = [
     cases: [
       { title: '在地小農購物網', url: '#' },
       { title: '流行服飾旗艦店', url: '#' }
-    ]
+    ],
+    promotions: []
   },
   {
     id: '3',
@@ -55,7 +57,8 @@ const MOCK_VENDORS: Vendor[] = [
     cases: [
       { title: '音樂節活動官網', url: '#' },
       { title: '建案預約賞屋頁', url: '#' }
-    ]
+    ],
+    promotions: ['https://example.com/promo1.jpg']
   },
   {
     id: '4',
@@ -72,7 +75,8 @@ const MOCK_VENDORS: Vendor[] = [
     cases: [
       { title: '物流管理後台', url: '#' },
       { title: '企業內部簽核系統', url: '#' }
-    ]
+    ],
+    promotions: []
   },
   {
     id: '5',
@@ -89,7 +93,8 @@ const MOCK_VENDORS: Vendor[] = [
     cases: [
       { title: '建築事務所作品集', url: '#' },
       { title: '藝廊線上展廳', url: '#' }
-    ]
+    ],
+    promotions: []
   },
   {
     id: '6',
@@ -108,7 +113,8 @@ const MOCK_VENDORS: Vendor[] = [
       { title: '餐廳菜單網站', url: '#' }
     ],
     rating: 4.6,
-    reviewCount: 558
+    reviewCount: 558,
+    promotions: []
   }
 ];
 
@@ -151,6 +157,13 @@ const transformData = (rawData: any[]): Vendor[] => {
     cases: parseCases(item.cases),
     rating: Number(item['評分'] || 0),
     reviewCount: Number(item['評論數'] || 0),
+    promotions: [
+      item['文宣1'],
+      item['文宣2'],
+      item['文宣3'],
+      item['文宣4'],
+      item['文宣5']
+    ].filter(url => typeof url === 'string' && url.trim() !== ''),
     updatedAt: new Date().toISOString()
   }));
 };
