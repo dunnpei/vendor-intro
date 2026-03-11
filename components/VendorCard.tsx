@@ -1,6 +1,6 @@
 import React from 'react';
 import { Vendor } from '../types';
-import { MapPin, Phone, Globe, Tag, Briefcase } from 'lucide-react';
+import { MapPin, Phone, Globe, Tag, Briefcase, FileImage } from 'lucide-react';
 import StarRating from './StarRating';
 
 interface VendorCardProps {
@@ -25,7 +25,7 @@ const VendorCard: React.FC<VendorCardProps> = ({ vendor, index }) => {
             loading="lazy"
           />
           {/* 序號標籤 */}
-          <div className="absolute top-0 left-0 bg-blue-600 text-white font-bold px-3 py-1 rounded-br-lg shadow-md z-10 text-lg">
+          <div className="absolute top-0 left-0 bg-primary-600 text-white font-bold px-3 py-1 rounded-br-lg shadow-md z-10 text-lg">
             {index + 1}
           </div>
         </div>
@@ -99,7 +99,7 @@ const VendorCard: React.FC<VendorCardProps> = ({ vendor, index }) => {
         {vendor.promotions && vendor.promotions.length > 0 && (
           <div className="pt-2">
             <h4 className="font-bold text-slate-800 mb-2 flex items-center text-lg">
-              <Tag size={18} className="mr-2 text-blue-500" />
+              <FileImage size={18} className="mr-2 text-blue-500" />
               廠商文宣
             </h4>
             <div className="flex flex-wrap gap-2">
