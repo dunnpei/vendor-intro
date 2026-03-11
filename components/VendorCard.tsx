@@ -25,7 +25,7 @@ const VendorCard: React.FC<VendorCardProps> = ({ vendor, index }) => {
             loading="lazy"
           />
           {/* 序號標籤 */}
-          <div className="absolute top-0 left-0 bg-red-600 text-white font-bold px-3 py-1 rounded-br-lg shadow-md z-10 text-lg">
+          <div className="absolute top-0 left-0 bg-blue-600 text-white font-bold px-3 py-1 rounded-br-lg shadow-md z-10 text-lg">
             {index + 1}
           </div>
         </div>
