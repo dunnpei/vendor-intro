@@ -176,10 +176,10 @@ const App: React.FC = () => {
       <footer className="bg-slate-900 text-white py-8">
         <div className="container mx-auto px-4 flex flex-col justify-center items-center space-y-2">
           <div className="text-2xl md:text-3xl font-bold tracking-wider text-center">
-            {new Date().getFullYear()} 高雄大學城哈佛大樓
+            高雄大學城哈佛大樓
           </div>
           <div className="text-sm md:text-base text-slate-600 font-medium tracking-tight">
-            &copy; PEI CHIANG All rights reserved.
+            &copy; {new Date().getFullYear()} PEI CHIANG All rights reserved.
           </div>
         </div>
       </footer>
